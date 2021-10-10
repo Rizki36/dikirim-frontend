@@ -1,12 +1,15 @@
+import "../styles/global.css";
 import "tailwindcss/tailwind.css";
 import Head from "next/head";
 import Sidebar from "../components/Sidebar";
 import Header from "../components/Header";
-import "../styles/global.css";
+// import { Provider } from "react-redux";
+// import { store } from "@/configs/redux/store";
 
 function MyApp({ Component, pageProps }) {
   return (
     <>
+      {/* <Provider store={store}> */}
       <Head>
         <title>Dikirim ❤️</title>
       </Head>
@@ -17,6 +20,7 @@ function MyApp({ Component, pageProps }) {
           <Component {...pageProps} />
         </div>
       </div>
+      {/* </Provider> */}
     </>
   );
 }
