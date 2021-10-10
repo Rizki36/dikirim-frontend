@@ -22,7 +22,8 @@
     "baseUrl": ".",
     "paths": {
       "@/public/*": ["public/*"],
-      "@/components/*": ["components/*"]
+      "@/components/*": ["components/*"],
+      "@/configs/*": ["configs/*"]
     }
   },
   "exclude": [
