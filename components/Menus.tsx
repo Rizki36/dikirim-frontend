@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import Image from "next/image";
 import chevronCircle from "@/public/icons/chevron_circle_down.svg";
 import dashboardIcon from "@/public/icons/menus/dashboard.svg";
@@ -94,11 +95,15 @@ const SubMenu = ({ children, ...props }) => {
 };
 
 const Menu = ({ href, text, icon, ...props }) => {
+  const router = useRouter();
+
   return (
     <Link href={href}>
       <a
         href="#"
-        className="flex items-center w-full hover:bg-[#E8E8E8] rounded-lg p-2 my-1"
+        className={`flex items-center w-full hover:bg-[#E8E8E8] ${
+          href === router.pathname && "bg-[#E8E8E8]"
+        } rounded-lg p-2 my-1`}
         {...props}
       >
         <div className="flex items-center h-[50px] px-5 w-full bg-white rounded-lg">
