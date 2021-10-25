@@ -1,22 +1,23 @@
 import * as yup from "yup";
 import Input from "@/components/baseInput/Input";
-// import { login } from "@/configs/redux/actions/userAction";
-// import { useDispatch } from "react-redux";
-// import { useRouter } from "next/router";
+import { userLogin } from "@/configs/redux/userSlice";
+import { useRouter } from "next/router";
 import { useFormik } from "formik";
+import { useAppDispatch, useAppSelector } from "@/configs/redux/hooks";
+import { persistor } from "@/configs/redux/store";
 
 const Login = () => {
-  // const router = useRouter();
-  // const dispatch = useDispatch();
+  const { user, isError, isFetching } = useAppSelector((state) => state.user);
+  const dispatch = useAppDispatch();
   const formik = useFormik({
     initialValues: {
       username: "",
       password: "",
     },
     onSubmit: (value) => {
-      // dispatch(
-      //   login({ username: value.username, password: value.password }, router)
-      // );
+      dispatch(
+        userLogin({ username: "eve.holt@reqres.in", password: "cityslicka" })
+      );
     },
     validationSchema: yup.object({
       username: yup.string().min(5).max(255).required(),
@@ -26,6 +27,15 @@ const Login = () => {
 
   return (
     <>
+      <div>is error {isError && "error"} | </div>
+      <div>is loading {isFetching && "loading"} | </div>
+      <div>img : {user?.img}</div>
+      <button
+        type="button"
+        onClick={() => persistor.purge().then(() => alert("purged"))}
+      >
+        purge
+      </button>
       <form onSubmit={formik.handleSubmit}>
         <Input
           label="Username"
