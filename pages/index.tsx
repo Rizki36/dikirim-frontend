@@ -1,15 +1,12 @@
-import Header from "@/components/Header";
-import privateRoute from "configs/routes/privateRoute";
+import UserLayout from "@/components/layouts/UserLayout";
+import { AuthInterface } from "index";
 
-const Home = ({ data }) => {
-  return <div>{data}</div>;
+const Home = () => {
+  return <UserLayout>Home</UserLayout>;
 };
 
-export const getServerSideProps = privateRoute(async (ctx) => {
-  return {
-    props: {
-      data: "test",
-    },
-  };
-});
+Home.auth = {
+  role: "reseller",
+} as AuthInterface;
+
 export default Home;
