@@ -1,9 +1,17 @@
-const ticketing = () => {
-    return (
-        <div>
-            ticketing
-        </div>
-    );
-}
+import ResellerLayout from "@/components/layouts/ResellerLayout";
+import { UserRole } from "constans/Auth";
+import { AuthInterface } from "types";
 
-export default ticketing;
+const Ticketing = () => {
+  return (
+    <ResellerLayout>
+      <div>ticketing</div>
+    </ResellerLayout>
+  );
+};
+
+Ticketing.auth = {
+  role: UserRole.reseller,
+} as AuthInterface;
+
+export default Ticketing;

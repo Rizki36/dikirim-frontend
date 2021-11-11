@@ -1,6 +1,7 @@
-import Sidebar from "@/components/Sidebar";
-import Header from "@/components/Header";
-const UserLayout = ({ children }) => {
+import Header from "./Header";
+import Sidebar from "./Sidebar";
+
+const ResellerLayout = ({ children }) => {
   return (
     <div className="grid grid-cols-[1fr] grid-rows-[auto,1fr]  lg:grid-cols-[auto,1fr] lg:grid-rows-[auto,1fr] h-screen">
       <Sidebar className="hidden lg:grid row-span-2" />
@@ -10,4 +11,4 @@ const UserLayout = ({ children }) => {
   );
 };
 
-export default UserLayout;
+export default ResellerLayout;

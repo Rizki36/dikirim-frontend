@@ -5,11 +5,7 @@
     "jsx": "preserve",
     "strictFunctionTypes": true,
     "sourceMap": true,
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
@@ -26,13 +22,12 @@
       "@/configs/*": ["configs/*"]
     }
   },
-  "exclude": [
-    "node_modules",
-    "**/node_modules/*"
-  ],
+  "exclude": ["node_modules", "**/node_modules/*"],
   "include": [
+    "types/**/*.ts",
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
-, "next.config.js"  ]
+    "**/*.tsx",
+    "next.config.js"
+, "pages/api/auth/[...nextauth].js"  ]
 }

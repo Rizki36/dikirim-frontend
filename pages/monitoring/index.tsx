@@ -1,9 +1,17 @@
-const monitoring = () => {
-    return (
-        <div>
-            Monitoring
-        </div>
-    );
-}
+import ResellerLayout from "@/components/layouts/ResellerLayout";
+import { UserRole } from "constans/Auth";
+import { AuthInterface } from "types";
 
-export default monitoring;
+const Monitoring = () => {
+  return (
+    <ResellerLayout>
+      <div>Monitoring</div>
+    </ResellerLayout>
+  );
+};
+
+Monitoring.auth = {
+  role: UserRole.reseller,
+} as AuthInterface;
+
+export default Monitoring;
