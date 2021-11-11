@@ -5,31 +5,35 @@ import { getSession, signIn } from "next-auth/react";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import React, { useEffect } from "react";
-import { AuthInterface } from "../../../index";
+import { AuthInterface } from "../../../types/index";
 
 const Login = () => {
   const formik = useFormik({
     initialValues: {
-      username: "",
+      email: "",
       password: "",
     },
-    onSubmit: async (value) => {
+    onSubmit: async (value: { email: string; password: string }) => {
       try {
-        const res = await signIn("credentials", { redirect: false });
+        const res = await signIn("credentials", {
+          email: value.email,
+          password: value.password,
+          redirect: false,
+        });
         if (res.error) {
-          // erro
+          // error
           console.log(res.error);
           return;
         }
         console.log(res);
-        window.location.replace("/order");
+        window.location.replace(res.url);
       } catch (error) {
         toast.error(error.msg ?? "Terjadi kesalahan.");
         console.log(error);
       }
     },
     validationSchema: yup.object({
-      username: yup.string().min(5).max(255).required(),
+      email: yup.string().min(5).max(255).required(),
       password: yup.string().min(5).max(255).required(),
     }),
   });
@@ -39,21 +43,19 @@ const Login = () => {
       <div className="flex items-center justify-center h-screen w-screen">
         <form onSubmit={formik.handleSubmit}>
           <Input
-            id="username"
-            label="Username"
+            id="email"
+            label="Email"
             autoComplete="none"
             type="text"
             stage={
-              formik.touched.username && formik.errors.username
-                ? "error"
-                : "default"
+              formik.touched.email && formik.errors.email ? "error" : "default"
             }
             inputDescription={
-              formik.touched.username && formik.errors.username
-                ? formik.errors.username
+              formik.touched.email && formik.errors.email
+                ? formik.errors.email
                 : null
             }
-            {...formik.getFieldProps("username")}
+            {...formik.getFieldProps("email")}
           />
 
           <Input
@@ -97,7 +99,7 @@ const Login = () => {
 };
 
 Login.auth = {
-  authenticated: "/",
+  authenticatedRedirect: "/",
 } as AuthInterface;
 
 export default Login;

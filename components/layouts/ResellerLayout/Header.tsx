@@ -76,7 +76,7 @@ const NotificationList = ({ isOpen, setIsOpen }) => {
     <div
       className={`transition-all duration-500 ${
         !isOpen && "-translate-y-full"
-      } fixed bg-white h-screen w-screen top-0 bottom-0 left-0 right-0 p-10 grid grid-rows-[1fr,auto] lg:hidden`}
+      } fixed bg-white h-screen w-screen top-0 bottom-0 left-0 right-0 p-10 grid grid-rows-[1fr,auto]`}
     >
       <div className="flex items-center justify-center flex-col text-center">
         <div className="text-3xl mb-2">🛎️</div>

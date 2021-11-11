@@ -1,3 +1,5 @@
+import axios from "axios";
+import { DateTime } from "luxon";
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GithubProvider from "next-auth/providers/github";
@@ -12,22 +14,27 @@ export default NextAuth({
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials, req) {
-        const res = {
-          ok: true,
-          data: {
-            name: "Rizki",
-            email: "cahrizki.rf@gmail.com",
-            avatar: "avatar.png",
-          },
-        };
-        const user = res.data;
+        try {
+          const data = await axios
+            .get("https://reqres.in/api/users/7")
+            .then((res) => res.data.data);
 
-        // If no error and we have user data, return it
-        if (res.ok && user) {
-          return user;
+          const user = {
+            name: data.first_name,
+            image: data.avatar,
+            role: "reseller",
+            access_token: "lbvthfgjhvbvtuyryxcfvughkgvcyxrdycfgyuhbvfr",
+            expires: 3600,
+          };
+
+          if (user) {
+            return user;
+          }
+
+          return null;
+        } catch (error) {
+          return null;
         }
-        // Return null if user data could not be retrieved
-        return null;
       },
     }),
     GithubProvider({
@@ -45,6 +52,39 @@ export default NextAuth({
   jwt: {
     encryption: true,
     secret: process.env.SECRET,
+  },
+  callbacks: {
+    async signIn({ user, account, profile, email, credentials }) {
+      return user;
+    },
+    async redirect({ url, baseUrl }) {
+      return baseUrl;
+    },
+    async jwt({ token, user, account, profile, isNewUser }) {
+      if (user) {
+        const { access_token, role, expires } = user;
+        console.log(user);
+        token = {
+          ...token,
+          access_token,
+          role,
+          expires,
+        };
+      }
+      return token;
+    },
+    async session({ session, token, user }) {
+      if (token) {
+        const { access_token, role, expires } = token;
+        session = {
+          ...session,
+          expires: DateTime.local().plus(expires).toUTC().toString(),
+          access_token,
+          user: { ...session.user, role },
+        };
+      }
+      return session;
+    },
   },
   debug: true,
 });
