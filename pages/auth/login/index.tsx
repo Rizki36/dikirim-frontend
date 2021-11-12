@@ -75,12 +75,23 @@ const Login = () => {
             }
             {...formik.getFieldProps("password")}
           />
-          <button
-            type="submit"
-            className="bg-indigo-800 text-white py-2 px-3 rounded-lg"
-          >
-            Submit
-          </button>
+          <div className="flex gap-2">
+            <button
+              type="submit"
+              className="bg-indigo-800 text-white py-2 px-3 rounded-lg"
+            >
+              Login
+            </button>
+            <button
+              type="button"
+              className="bg-indigo-800 text-white py-2 px-3 rounded-lg"
+              onClick={() => {
+                signIn("google");
+              }}
+            >
+              Google
+            </button>
+          </div>
         </form>
         <ToastContainer
           position="top-right"

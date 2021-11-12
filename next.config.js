@@ -1,6 +1,6 @@
 module.exports = {
   images: {
-    domains: ["randomuser.me", "reqres.in"],
+    domains: ["randomuser.me", "reqres.in", "lh3.googleusercontent.com"],
   },
   async rewrites() {
     return [

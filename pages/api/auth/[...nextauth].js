@@ -55,6 +55,17 @@ export default NextAuth({
   },
   callbacks: {
     async signIn({ user, account, profile, email, credentials }) {
+      if (account) {
+        user.access_token = account.access_token;
+        user.expires = account.expires_at;
+        user.role = "reseller";
+      }
+
+      // console.log("userrrr", user);
+      // console.log("accounttt", account);
+      // console.log("profileee", profile);
+      // console.log("emailll", email);
+      // console.log("credentialsss", credentials);
       return user;
     },
     async redirect({ url, baseUrl }) {
@@ -63,7 +74,11 @@ export default NextAuth({
     async jwt({ token, user, account, profile, isNewUser }) {
       if (user) {
         const { access_token, role, expires } = user;
-        console.log(user);
+        // console.log("userrrr", user);
+        // console.log("tokennn", token);
+        // console.log("accounttt", account);
+        // console.log("profileee", profile);
+        // console.log("isNewUserrr", isNewUser);
         token = {
           ...token,
           access_token,
@@ -86,5 +101,5 @@ export default NextAuth({
       return session;
     },
   },
-  debug: true,
+  debug: false,
 });
