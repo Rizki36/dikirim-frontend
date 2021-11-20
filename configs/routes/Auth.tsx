@@ -2,6 +2,7 @@ import { AuthInterface } from "types/index";
 import { signIn, signOut, useSession } from "next-auth/react";
 import React from "react";
 import { useRouter } from "next/router";
+import backendApi from "../api/backendApi";
 
 const Auth = ({
   role,
@@ -11,12 +12,11 @@ const Auth = ({
 }: AuthInterface) => {
   const { data: session, status } = useSession();
   const router = useRouter();
-
   const isUser = !!session?.user;
   React.useEffect(() => {
     if (status === "loading") return null; // Do nothing while loading
     if (!isUser && !authenticatedRedirect) signIn(); // If not authenticated, force log in
-  }, [isUser, status]);
+  }, [isUser, status, authenticatedRedirect]);
 
   if (isUser) {
     if (!!authenticatedRedirect) {

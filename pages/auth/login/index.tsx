@@ -6,6 +6,7 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import React, { useEffect } from "react";
 import { AuthInterface } from "../../../types/index";
+import backendApi from "@/configs/api/backendApi";
 
 const Login = () => {
   const formik = useFormik({
