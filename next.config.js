@@ -10,4 +10,13 @@ module.exports = {
       },
     ];
   },
+  async redirects() {
+    return [
+      {
+        source: "/order",
+        destination: "/order/pickup",
+        permanent: false,
+      },
+    ];
+  },
 };

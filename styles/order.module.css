@@ -1,6 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-
-
 /* DayPicker styles */
 
 .DayPicker {
@@ -124,17 +121,12 @@
 }
 
 .DayPicker-Day {
-    box-sizing: border-box;
     display: table-cell;
-    /* padding: 0.5em; */
-    border-radius: 100%;
+    padding: 0.5em;
+    border-radius: 50%;
     vertical-align: middle;
     text-align: center;
     cursor: pointer;
-    height: 40px;
-    width: 40px;
-    min-height: 40px;
-    min-width: 40px;
 }
 
 .DayPicker-WeekNumber {

@@ -6,7 +6,6 @@ import {
   PayloadAction,
 } from "@reduxjs/toolkit";
 import backendApi from "../api/backendApi";
-import { AxiosResponse } from "axios";
 import { PURGE } from "redux-persist/lib/constants";
 
 export interface UserState {

@@ -27,6 +27,8 @@ export default NextAuth({
             expires: 3600,
           };
 
+          
+
           if (user) {
             return user;
           }
