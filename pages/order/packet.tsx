@@ -14,7 +14,7 @@ const Packet = () => {
 
   return (
     <OrderLayout>
-      <div>
+      <div className="flex gap-x-3">
         <Link href={"/order/pickup"}>
           <a>Pickup</a>
         </Link>

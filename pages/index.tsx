@@ -6,8 +6,8 @@ import { AuthInterface } from "types";
 const Home = () => {
   return (
     <UserLayout>
-      <div>Home</div>
-      <button onClick={() => signOut()}>Sign Out</button>
+      {/* <div>Home</div> */}
+      {/* <button onClick={() => signOut()}>Sign Out</button> */}
     </UserLayout>
   );
 };

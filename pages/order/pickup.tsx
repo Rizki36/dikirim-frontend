@@ -53,92 +53,99 @@ const Pickup = () => {
         {({ values }: FormikProps<Values>) => (
           <Form>
             {console.log(values)}
-            <div className="rounded-3xl border border-gray-200 h-[500px] w-full mb-10 px-14 py-12 flex">
-              <div className="w-6/12">
-                <div className="mb-10">
-                  <div className="flex items-center">
-                    <div>
-                      <h6 className="font-bold text-gray-900 leading-none">
-                        Rizki Fitra Rahman
-                      </h6>
-                      <small className="text-gray-900 text-sm">
-                        089529407796
-                      </small>
+            <div className="rounded-3xl border border-gray-200 h-[500px] w-full mb-10 px-14 py-12">
+              <div className="flex">
+                <div className="w-6/12">
+                  <div className="mb-10">
+                    <div className="flex items-center">
+                      <div>
+                        <h6 className="font-bold text-gray-900 leading-none">
+                          Rizki Fitra Rahman
+                        </h6>
+                        <small className="text-gray-900 text-sm">
+                          089529407796
+                        </small>
+                      </div>
+                      <span className="-mt-4 ml-3 px-2 py-1 text-xs bg-primary opacity-70 text-white rounded-md">
+                        Utama
+                      </span>
                     </div>
-                    <span className="-mt-4 ml-3 px-2 py-1 text-xs bg-primary opacity-70 text-white rounded-md">
-                      Utama
-                    </span>
+
+                    <div className="text-gray-400 text-sm mb-5">
+                      <span className="block">RT 21 RW 005 Pandanwangi</span>
+                      <span className="block">
+                        Kec. Diwek, Kab. Jombang, Prov. Jawa Timur
+                      </span>
+                    </div>
+
+                    <button className="px-2 py-2 rounded-md bg-gray-200 text-sm text-gray-500">
+                      Ganti Alamat
+                    </button>
                   </div>
 
-                  <div className="text-gray-400 text-sm mb-5">
-                    <span className="block">RT 21 RW 005 Pandanwangi</span>
-                    <span className="block">
-                      Kec. Diwek, Kab. Jombang, Prov. Jawa Timur
-                    </span>
-                  </div>
-
-                  <button className="px-2 py-2 rounded-md bg-gray-200 text-sm text-gray-500">
-                    Ganti Alamat
-                  </button>
-                </div>
-
-                <div className="flex gap-2">
-                  <div role={"group"} className="flex gap-1 flex-col w-[200px]">
-                    <h5 className="font-medium mb-2">Kendaraan Jemput</h5>
-                    <InputRadioButton name="vehicle" value={VehiclesType.truck}>
-                      <Truck
-                        is_active={values.vehicle === VehiclesType.truck}
-                        className="mr-3"
-                      />
-                      Truk
-                    </InputRadioButton>
-                    <InputRadioButton name="vehicle" value={VehiclesType.car}>
-                      <Truck
-                        is_active={values.vehicle === VehiclesType.car}
-                        className="mr-3"
-                      />
-                      Mobil
-                    </InputRadioButton>
-                    <InputRadioButton
-                      name="vehicle"
-                      value={VehiclesType.motorcycle}
+                  <div className="flex gap-2">
+                    <div
+                      role={"group"}
+                      className="flex gap-1 flex-col w-[200px]"
                     >
-                      <Truck
-                        is_active={values.vehicle === VehiclesType.motorcycle}
-                        className="mr-3"
-                      />
-                      Sepeda Motor
-                    </InputRadioButton>
-                  </div>
-                  <div role={"group"} className="flex gap-1 flex-col w-[200px]">
-                    <h5 className="font-medium mb-2">Vendor</h5>
-                    <InputRadioButton name="vendor" value={VendorType.jne}>
-                      JNE
-                    </InputRadioButton>
-                    <InputRadioButton name="vendor" value={VendorType.jnt}>
-                      JNT
-                    </InputRadioButton>
-                    <InputRadioButton name="vendor" value={VendorType.sap}>
-                      SAP
-                    </InputRadioButton>
+                      <h5 className="font-medium mb-2">Kendaraan Jemput</h5>
+                      <InputRadioButton
+                        name="vehicle"
+                        value={VehiclesType.truck}
+                      >
+                        <Truck
+                          is_active={values.vehicle === VehiclesType.truck}
+                          className="mr-3"
+                        />
+                        Truk
+                      </InputRadioButton>
+                      <InputRadioButton name="vehicle" value={VehiclesType.car}>
+                        <Truck
+                          is_active={values.vehicle === VehiclesType.car}
+                          className="mr-3"
+                        />
+                        Mobil
+                      </InputRadioButton>
+                      <InputRadioButton
+                        name="vehicle"
+                        value={VehiclesType.motorcycle}
+                      >
+                        <Truck
+                          is_active={values.vehicle === VehiclesType.motorcycle}
+                          className="mr-3"
+                        />
+                        Sepeda Motor
+                      </InputRadioButton>
+                    </div>
+                    <div
+                      role={"group"}
+                      className="flex gap-1 flex-col w-[200px]"
+                    >
+                      <h5 className="font-medium mb-2">Vendor</h5>
+                      <InputRadioButton name="vendor" value={VendorType.jne}>
+                        JNE
+                      </InputRadioButton>
+                      <InputRadioButton name="vendor" value={VendorType.jnt}>
+                        JNT
+                      </InputRadioButton>
+                      <InputRadioButton name="vendor" value={VendorType.sap}>
+                        SAP
+                      </InputRadioButton>
+                    </div>
                   </div>
                 </div>
+                <div className="w-6/12 flex justify-center">
+                  <MyDatePicker name="selectedDay" />
+                </div>
               </div>
-              <div className="w-6/12 flex justify-center">
-                <MyDatePicker name="selectedDay" />
+
+              <div className="flex justify-center">
+                <Link href={"/order/packet"}>
+                  <a className="py-2 px-4 bg-primary text-white rounded-md mt-10">
+                    Next
+                  </a>
+                </Link>
               </div>
-            </div>
-            <button type="submit">Submit</button>
-            <div>
-              <Link href={"/order/pickup"}>
-                <a>Pickup</a>
-              </Link>
-              <Link href={"/order/packet"}>
-                <a>Packet</a>
-              </Link>
-              <Link href={"/order/review"}>
-                <a>Review</a>
-              </Link>
             </div>
           </Form>
         )}

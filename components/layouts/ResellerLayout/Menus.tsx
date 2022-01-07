@@ -20,7 +20,7 @@ const Menus = ({ onMenuClick = null }) => {
       />
       <Menu
         onClick={onMenuClick}
-        href="/order"
+        href="/order/pickup"
         text="Buat Order"
         icon={orderIcon}
       />
